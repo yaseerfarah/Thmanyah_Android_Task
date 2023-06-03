@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Thmanyah Task</string>
+
+    <string name="msgNoInternetConnection">Connection failed.\nPlease check your internet connection and try again.</string>
+    <string name="msgUnexpextedError">An error has occurred.\nPlease try again later.</string>
+    <string name="no_internet_screens_retry_btn_title">Retry</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="library">Library</string>
+    <plurals name="hours">
+        <item quantity="one">%d Hour</item>
+        <item quantity="two">%d Hours</item>
+        <item quantity="other">%d Hours</item>
+    </plurals>
+
+    <plurals name="minutes">
+        <item quantity="one">%d minute</item>
+        <item quantity="two">%d minutes</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+
+    <plurals name="episode">
+        <item quantity="one">%d episode</item>
+        <item quantity="two">%d episodes</item>
+        <item quantity="other">%d episodes</item>
+    </plurals>
+</resources>

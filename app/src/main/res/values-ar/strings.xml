@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Thmanyah Task</string>
+
+    <string name="msgNoInternetConnection">فشل الاتصال. يرجى التحقق من اتصالك بالإنترنت وحاول مرة أخرى.</string>
+    <string name="msgUnexpextedError">حدث خطأ. الرجاء المحاولة مرة أخرى فيما بعد.</string>
+    <string name="no_internet_screens_retry_btn_title">أعد المحاولة</string>
+    <string name="home">الرئيسية</string>
+    <string name="search">البحث</string>
+    <string name="library">المكتبة</string>
+
+    <plurals name="hours">
+        <item quantity="one"> ساعة</item>
+        <item quantity="two">ساعاتان</item>
+        <item quantity="other">%d ساعات</item>
+    </plurals>
+
+    <plurals name="minutes">
+        <item quantity="one"> دقيقة</item>
+        <item quantity="two"> دقيقتان</item>
+        <item quantity="other">%d دقائق</item>
+    </plurals>
+
+    <plurals name="episode">
+        <item quantity="one">حلقة</item>
+        <item quantity="two">حلقتان</item>
+        <item quantity="other">%d حلقة</item>
+    </plurals>
+</resources>

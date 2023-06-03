@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StateView">
+        <attr name="msgColor" format="color|reference" />
+        <attr name="msgFontName" format="reference" />
+        <attr name="retryColor" format="color|reference" />
+        <attr name="retryFontName" format="reference" />
+        <attr name="retryBackground" format="reference" />
+        <attr name="networkIcon" format="reference" />
+        <attr name="retryIcon" format="reference" />
+        <attr name="emptyIcon" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
+    </declare-styleable>
+</resources>

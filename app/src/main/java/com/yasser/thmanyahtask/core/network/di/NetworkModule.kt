@@ -1,0 +1,46 @@
+package com.yasser.thmanyahtask.core.network.di
+
+import com.google.gson.GsonBuilder
+import com.yasser.thmanyahtask.BuildConfig
+import com.yasser.thmanyahtask.core.network.ApiEndpoints
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
+
+@InstallIn(SingletonComponent::class)
+@Module
+class NetworkModule {
+    @Provides
+    @Singleton
+    fun apiEndpoints(retrofit: Retrofit): ApiEndpoints {
+        return retrofit.create(ApiEndpoints::class.java)
+    }
+
+
+    @Provides
+    fun okHttp(): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return OkHttpClient.Builder().addInterceptor(interceptor)
+            .readTimeout(1, TimeUnit.MINUTES)
+            .connectTimeout(1, TimeUnit.MINUTES).build()
+
+    }
+
+    @Singleton
+    @Provides
+    fun retrofit(client: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BaseUrl)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+            .client(client)
+            .build()
+    }
+}
