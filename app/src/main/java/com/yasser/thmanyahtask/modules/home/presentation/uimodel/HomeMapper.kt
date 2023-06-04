@@ -18,6 +18,19 @@ fun BroadcastPlaylistEntity.toHomeUiState():HomeUiState{
     )
 }
 
+
+fun BroadcastUiModel.toHomeUiState(isFavorite:Boolean):HomeUiState{
+    return HomeUiState(
+        data = this.copy(
+            isFavorite=isFavorite,
+            favoriteIcon = if(isFavorite)R.drawable.ic_favorite_filled else R.drawable.ic_favorite_outline
+        ),
+        isLoading = false,
+        errorMsg = null,
+        isNetworkError = false
+    )
+}
+
 fun BroadcastPlaylistEntity.toBroadcastUiModel():BroadcastUiModel{
     return BroadcastUiModel(
         id=id,

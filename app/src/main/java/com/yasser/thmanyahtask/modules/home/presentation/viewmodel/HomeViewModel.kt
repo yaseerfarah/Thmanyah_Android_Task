@@ -47,9 +47,14 @@ class HomeViewModel @Inject constructor(
     override fun sendEvent(event: HomeUIEvents) {
         when(event){
             is HomeUIEvents.GetBroadcastData->getBroadcastPlaylist()
+            is HomeUIEvents.ToggleBroadcastToFavorite->toggleBroadcastFavorite(event.broadcastUiModel)
         }
     }
 
+
+    private fun toggleBroadcastFavorite(broadcastUiModel: BroadcastUiModel){
+        updateState(broadcastUiModel.toHomeUiState(!broadcastUiModel.isFavorite))
+    }
 
     private fun getBroadcastPlaylist(){
         updateState(HomeUiState(data = null, isLoading = true, errorMsg = null, isNetworkError = false))

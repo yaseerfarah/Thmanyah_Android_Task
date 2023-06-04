@@ -1,19 +1,19 @@
 package com.yasser.thmanyahtask.modules.home.presentation.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yasser.thmanyahtask.core.extensions.loadImage
 import com.yasser.thmanyahtask.core.extensions.onClick
 import com.yasser.thmanyahtask.databinding.LayoutBroadcastHeaderBinding
-import com.yasser.thmanyahtask.modules.home.presentation.adapter.`interface`.BroadcastActionListener
+import com.yasser.thmanyahtask.modules.home.presentation.adapter.listener.BroadcastActionListener
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.BroadcastUiModel
 
 
 class BroadcastHeaderAdapter constructor(
-    private val broadcastActionListener: BroadcastActionListener
+    private val context: Context,
+    private val broadcastActionListener: BroadcastActionListener,
 ) : RecyclerView.Adapter<BroadcastHeaderAdapter.ViewHolder>() {
 
     private var broadcastUiModel:BroadcastUiModel?=null
@@ -35,15 +35,15 @@ class BroadcastHeaderAdapter constructor(
             binding.broadcastDescription.text=item.description
             binding.coverImage.loadImage(item.image,placeholderDrawable = null, progressBar = null)
             binding.likeImg.setImageResource(item.favoriteIcon)
-            initAction()
+            initAction(item)
         }
 
-        private fun initAction(){
+        private fun initAction(item: BroadcastUiModel){
             binding.backBtn.onClick {
                 broadcastActionListener.onBackClick()
             }
             binding.likeBtn.onClick {
-                broadcastActionListener.onFavoriteClick()
+                broadcastActionListener.onFavoriteClick(item)
             }
             binding.optionBtn.onClick {
                 broadcastActionListener.onOptionClick()

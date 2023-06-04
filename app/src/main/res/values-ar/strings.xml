@@ -8,6 +8,7 @@
     <string name="search">البحث</string>
     <string name="library">المكتبة</string>
     <string name="episodes">الحلقات</string>
+    <string name="empty_episode">لا يوجد اي حلقات بعد</string>
 
     <plurals name="hours">
         <item quantity="one"> ساعة</item>

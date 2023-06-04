@@ -1,5 +1,6 @@
 package com.yasser.thmanyahtask.modules.home.presentation.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -12,6 +13,7 @@ import com.yasser.thmanyahtask.modules.home.presentation.uimodel.EpisodeUiModel
 
 
 class EpisodeListAdapter constructor(
+    private val context: Context,
     private val onPlayClick:(EpisodeUiModel)->Unit,
     private val onMenuClick:(EpisodeUiModel)->Unit
 ) : RecyclerView.Adapter<EpisodeListAdapter.ViewHolder>() {

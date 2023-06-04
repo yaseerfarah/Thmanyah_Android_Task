@@ -7,7 +7,9 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="library">Library</string>
-    <string name="episodes">الحلقات</string>
+    <string name="episodes">Episodes</string>
+    <string name="empty_episode">There is no episode track yet.</string>
+
     <plurals name="hours">
         <item quantity="one">%d Hour</item>
         <item quantity="two">%d Hours</item>
