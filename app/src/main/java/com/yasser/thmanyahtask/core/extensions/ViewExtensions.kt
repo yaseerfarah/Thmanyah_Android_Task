@@ -31,6 +31,7 @@ import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import java.lang.ref.WeakReference
 import java.util.*
 
 internal fun View.visible(visible: Boolean) {
@@ -81,7 +82,7 @@ fun ImageView.loadImage(
     placeholderDrawable: Drawable? = null,
     progressBar: ProgressBar?
 ) {
-
+    val progressBarReference=WeakReference(progressBar)
     val theImage = GlideUrl(
         imageUrl, LazyHeaders.Builder()
             .addHeader("User-Agent", "5")
@@ -95,13 +96,13 @@ fun ImageView.loadImage(
         .listener(object : RequestListener<Drawable> {
             override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
                 //Log.e("Load Image",e!!.message!!)
-                progressBar?.visible(false)
+                progressBarReference.get()?.visible(false)
                 return false
             }
 
             override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
 
-                progressBar?.visible(false)
+                progressBarReference.get()?.visible(false)
                 return false
             }
 

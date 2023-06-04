@@ -1,5 +1,6 @@
 package com.yasser.thmanyahtask.modules.home.presentation.uimodel
 
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import java.util.concurrent.TimeUnit
 
@@ -14,6 +15,8 @@ data class BroadcastUiModel(
     val timeUnit: TimeUnit,
     val createdAt: String,
     val followingCount: Long,
+    val isFavorite:Boolean,
+   @DrawableRes val favoriteIcon:Int,
     val episodes:List<EpisodeUiModel>
 )
 

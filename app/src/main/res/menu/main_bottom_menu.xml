@@ -6,7 +6,6 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
         android:checked="true"
-        android:iconTint=""
         />
     <item
         android:title="@string/search"

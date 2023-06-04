@@ -4,12 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
+import com.yasser.thmanyahtask.core.extensions.loadImage
+import com.yasser.thmanyahtask.core.extensions.onClick
 import com.yasser.thmanyahtask.databinding.ItemEpisodeBinding
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.EpisodeDiffUtils
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.EpisodeUiModel
 
 
 class EpisodeListAdapter constructor(
+    private val onPlayClick:(EpisodeUiModel)->Unit,
+    private val onMenuClick:(EpisodeUiModel)->Unit
 ) : RecyclerView.Adapter<EpisodeListAdapter.ViewHolder>() {
     private val mDiffer: AsyncListDiffer<EpisodeUiModel?> =
         AsyncListDiffer(this, EpisodeDiffUtils)
@@ -28,8 +32,20 @@ class EpisodeListAdapter constructor(
     inner class ViewHolder constructor(private val binding: ItemEpisodeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: EpisodeUiModel) {
+            binding.episodeImage.loadImage(item.image,placeholderDrawable = null, progressBar = binding.imageProgress)
+            binding.episodeTitle.text=item.name
+            binding.episodeCategory.text=item.podcastName
+            binding.episodeDate.text=item.releaseDate
+            initAction(item)
 
-
+        }
+        private fun initAction(item: EpisodeUiModel){
+            binding.playBtn.onClick {
+                onPlayClick.invoke(item)
+            }
+            binding.menuBtn.onClick {
+                onMenuClick.invoke(item)
+            }
         }
     }
 

@@ -11,7 +11,7 @@
     <color name="colorPrimary">@color/colorBlue92</color>
     <color name="colorRegentGray">#8C989C</color>
     <color name="colorRollingStone">#afafb0</color>
-    <color name="colorBlue92">#1c1892</color>
+    <color name="colorBlue92">#2972F3</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="colorSuccessGreen">#78B517</color>
     <color name="colorWhiteOpacity60">#99FFFFFF</color>

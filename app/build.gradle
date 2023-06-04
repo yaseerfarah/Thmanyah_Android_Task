@@ -109,5 +109,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
+    //Blur view
+    implementation "com.github.mmin18:realtimeblurview:$realtimeblurview"
+
 
 }

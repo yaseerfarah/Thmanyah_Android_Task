@@ -29,7 +29,9 @@ fun BroadcastPlaylistEntity.toBroadcastUiModel():BroadcastUiModel{
         episodeTotalDuration=if (episodeTotalDuration.toHours()>0)episodeTotalDuration.toHours() else episodeTotalDuration.toMinutes(),
         createdAt=createdAt,
         followingCount=followingCount,
-        episodes = episodes.toListOfEpisodeUiModel()
+        episodes = episodes.toListOfEpisodeUiModel(),
+        isFavorite = false,
+        favoriteIcon = R.drawable.ic_favorite_outline
     )
 }
 

@@ -7,6 +7,7 @@
     <string name="home">الرئيسية</string>
     <string name="search">البحث</string>
     <string name="library">المكتبة</string>
+    <string name="episodes">الحلقات</string>
 
     <plurals name="hours">
         <item quantity="one"> ساعة</item>

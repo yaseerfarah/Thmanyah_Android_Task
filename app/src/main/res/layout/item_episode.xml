@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layoutDirection="rtl"
+    android:layout_marginHorizontal="@dimen/dimen_20dp"
+    android:layout_marginTop="@dimen/dimen_10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="@dimen/dimen_0_5dp"
+        android:id="@+id/line"
+        android:background="@color/colorRegentGray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/dimen_80dp"
+        android:layout_height="@dimen/dimen_80dp"
+        android:id="@+id/imageContainer"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/episodeImage"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageProgress"
+        android:indeterminateTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/imageContainer"
+        app:layout_constraintEnd_toEndOf="@+id/imageContainer"
+        app:layout_constraintTop_toTopOf="@+id/imageContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/imageContainer"
+        />
+
+
+    <TextView
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        tools:text="لماذا نتوقف شهرين قبل كأس العالم؟"
+        android:layout_marginTop="@dimen/dimen_6dp"
+        android:id="@+id/episodeTitle"
+        android:layout_marginStart="@dimen/dimen_15dp"
+        android:layout_marginEnd="@dimen/dimen_5dp"
+        android:textSize="@dimen/dimen_18sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/imageContainer"
+        app:layout_constraintStart_toEndOf="@+id/imageContainer"
+        app:layout_constraintEnd_toStartOf="@+id/optionLayout"
+        />
+
+    <TextView
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        tools:text="مرتدة"
+        android:id="@+id/episodeCategory"
+        android:layout_marginTop="@dimen/dimen_6dp"
+        android:layout_marginHorizontal="@dimen/dimen_15dp"
+        android:textSize="@dimen/dimen_15sp"
+        android:textStyle="normal"
+        android:textColor="@color/colorRegentGray"
+        app:layout_constraintTop_toBottomOf="@+id/episodeTitle"
+        app:layout_constraintStart_toEndOf="@+id/imageContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        tools:text="اكتوبر 2020 . 23 دقيقة"
+        android:layout_marginTop="@dimen/dimen_6dp"
+        android:layout_marginHorizontal="@dimen/dimen_15dp"
+        android:id="@+id/episodeDate"
+        android:textSize="@dimen/dimen_15sp"
+        android:textStyle="normal"
+        android:textColor="@color/colorRegentGray"
+        app:layout_constraintTop_toBottomOf="@+id/episodeCategory"
+        app:layout_constraintStart_toEndOf="@+id/imageContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <LinearLayout
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimen_6dp"
+        android:id="@+id/optionLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dimen_24dp"
+            android:layout_height="@dimen/dimen_24dp"
+            android:src="@drawable/ic_play_round"
+            android:id="@+id/play_btn"
+            android:layout_marginHorizontal="@dimen/dimen_5dp"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/dimen_24dp"
+            android:layout_height="@dimen/dimen_24dp"
+            android:src="@drawable/ic_menu"
+            android:id="@+id/menu_btn"
+
+            />
+
+
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

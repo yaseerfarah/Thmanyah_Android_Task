@@ -32,4 +32,7 @@ ext {
     // navigation
     navigation_version = "2.5.3"
 
+    //Blur view
+    realtimeblurview = '1.2.1'
+
 }
