@@ -12,8 +12,9 @@ import com.yasser.thmanyahtask.modules.home.presentation.adapter.EpisodeListAdap
 import com.yasser.thmanyahtask.modules.home.presentation.adapter.listener.BroadcastActionListener
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.*
 import com.yasser.thmanyahtask.modules.home.presentation.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding,HomeUiModel,HomeUiState,HomeUIEffects,HomeUIEvents,HomeViewModel>(),
     BroadcastActionListener {
     override val viewModel by viewModels<HomeViewModel>()
@@ -34,6 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeUiModel,HomeUiState,Ho
             adapter= ConcatAdapter(broadcastHeaderAdapter,episodeListAdapter)
             layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
         }
+        viewModel.sendEvent(HomeUIEvents.GetBroadcastData)
     }
 
     override fun initListener() {

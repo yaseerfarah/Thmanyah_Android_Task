@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="broadcast_header_height">455dp</dimen>
+    <dimen name="broadcast_header_height">445dp</dimen>
     <dimen name="broadcast_content_height">400dp</dimen>
     <dimen name="dimen_0dp">0dp</dimen>
     <dimen name="dimen_20dp">20dp</dimen>
@@ -21,4 +21,7 @@
     <dimen name="dimen_5dp">5dp</dimen>
     <dimen name="dimen_18sp">18sp</dimen>
     <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="dimen_14dp">14dp</dimen>
+    <dimen name="dimen_11dp">11dp</dimen>
+    <dimen name="dimen_12sp">12sp</dimen>
 </resources>

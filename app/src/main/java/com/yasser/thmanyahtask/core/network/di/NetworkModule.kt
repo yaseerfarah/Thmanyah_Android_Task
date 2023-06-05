@@ -3,6 +3,7 @@ package com.yasser.thmanyahtask.core.network.di
 import com.google.gson.GsonBuilder
 import com.yasser.thmanyahtask.BuildConfig
 import com.yasser.thmanyahtask.core.network.ApiEndpoints
+import com.yasser.thmanyahtask.core.network.NetworkConnectionInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,10 +26,11 @@ class NetworkModule {
 
 
     @Provides
-    fun okHttp(): OkHttpClient {
+    fun okHttp(networkConnectionInterceptor: NetworkConnectionInterceptor): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder().addInterceptor(interceptor)
+            .addInterceptor (networkConnectionInterceptor)
             .readTimeout(1, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES).build()
 

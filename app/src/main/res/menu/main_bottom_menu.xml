@@ -4,17 +4,17 @@
     <item
         android:title="@string/home"
         android:id="@+id/home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/home_bottom_icon"
         android:checked="true"
         />
     <item
         android:title="@string/search"
         android:id="@+id/search"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/search_bottom_icon"
         />
     <item
         android:title="@string/library"
         android:id="@+id/library"
-        android:icon="@drawable/ic_library"
+        android:icon="@drawable/library_bottom_icon"
         />
 </menu>

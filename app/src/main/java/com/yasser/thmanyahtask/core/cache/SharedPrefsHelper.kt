@@ -9,10 +9,10 @@ class SharedPrefsHelper(context: Context) {
 
 
     companion object {
-        private const val SHARED_PREFS_NAME = "UP_Data"
-         const val HOURS_UNTIL_PROMPT = 4
-         const val MILLIS_UNTIL_PROMPT = HOURS_UNTIL_PROMPT  * 60 * 60 * 1000
-         const val LAST_UPDATE = "LAST_UP"
+        private const val SHARED_PREFS_NAME = "Token_Data"
+         const val EXPIRE_IN = "expire"
+        const val ACCESS_TOKEN = "access_token"
+        const val LAST_UPDATE = "last_update"
     }
 
     private val sharedPreferences: SharedPreferences

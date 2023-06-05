@@ -5,9 +5,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.example.moviecompose.modules.details.presentation.uimodel.MainUiModel
 import com.example.moviecompose.modules.details.presentation.uimodel.MainUiState
 import com.yasser.thmanyahtask.R
@@ -15,6 +18,7 @@ import com.yasser.thmanyahtask.base.presentation.navigation.NavigationCoordinato
 import com.yasser.thmanyahtask.base.presentation.view.BaseActivity
 import com.yasser.thmanyahtask.databinding.ActivityMainBinding
 import com.yasser.thmanyahtask.modules.main.presentation.navigation.MainNavigationEvent
+import com.yasser.thmanyahtask.modules.main.presentation.uimodel.BottomNavEnum
 import com.yasser.thmanyahtask.modules.main.presentation.uimodel.MainUIEffects
 import com.yasser.thmanyahtask.modules.main.presentation.uimodel.MainUIEvents
 import com.yasser.thmanyahtask.modules.main.presentation.viewmodel.MainViewModel
@@ -29,7 +33,12 @@ class MainActivity :BaseActivity<ActivityMainBinding,MainUiModel,MainUiState,Mai
 
     @Inject
     lateinit var navigator: NavigationCoordinator<MainNavigationEvent>
-    private lateinit var navController:NavController
+    private  val navController:NavController by lazy {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navHostFragment.navController
+    }
+    private var isFirstScreen=true
 
     override fun bindView(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
@@ -40,21 +49,45 @@ class MainActivity :BaseActivity<ActivityMainBinding,MainUiModel,MainUiState,Mai
     }
 
     override fun initViews() {
-        navController= Navigation.findNavController(
-            this,
-            R.id.main_nav_graph
-        )
-       navigator.init(navigator)
+       navigator.init(navController)
+        onBackPress()
     }
 
     override fun initListener() {
-        TODO("Not yet implemented")
+        binding.bottomNavigation.setOnItemSelectedListener { menuItem->
+            when(menuItem.itemId){
+                R.id.home-> viewModel.sendEvent(MainUIEvents.NavigateToScreen(BottomNavEnum.HOME))
+                R.id.search-> viewModel.sendEvent(MainUIEvents.NavigateToScreen(BottomNavEnum.SEARCH))
+                R.id.library-> viewModel.sendEvent(MainUIEvents.NavigateToScreen(BottomNavEnum.LIBRARY))
+            }
+            true
+        }
     }
 
     override fun render(ui: MainUiModel) {
-        TODO("Not yet implemented")
+        isFirstScreen=ui.currentScreen==BottomNavEnum.HOME
+        binding.bottomNavigation.selectedItemId=when(ui.currentScreen){
+            BottomNavEnum.HOME->R.id.home
+            BottomNavEnum.SEARCH->R.id.search
+            BottomNavEnum.LIBRARY->R.id.library
+        }
     }
 
+
+    private fun onBackPress() {
+        onBackPressedDispatcher.addCallback(
+            this /* lifecycle owner */,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (!isFirstScreen)
+                        viewModel.sendEvent(MainUIEvents.NavigateToScreen(BottomNavEnum.HOME))
+                    else
+                        finish()
+                }
+            })
+
+
+    }
 
     companion object{
 

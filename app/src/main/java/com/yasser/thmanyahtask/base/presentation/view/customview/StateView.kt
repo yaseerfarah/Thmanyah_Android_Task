@@ -74,6 +74,7 @@ open class StateView @JvmOverloads constructor(
                 retryAction = retryAction,
                 backgroundColor = backgroundColor,
                 retryTextColor = retryTextColor,
+                retryBackground = retryBackground
             )
         }
     }

@@ -28,6 +28,7 @@ data class EpisodeUiModel(
     val imageBigger: String,
     val audioLink: String,
     val duration: Long,
+    val timeUnit: TimeUnit,
     val durationInSeconds: Long,
     val views: Long,
     val podcastName: String,
@@ -46,6 +47,7 @@ data class EpisodeUiModel(
                 && views == oldModel.views
                 && podcastName == oldModel.podcastName
                 && releaseDate == oldModel.releaseDate
+                && timeUnit == oldModel.timeUnit
     }
 }
 

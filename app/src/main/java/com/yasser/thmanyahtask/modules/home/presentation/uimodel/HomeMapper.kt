@@ -1,12 +1,15 @@
 package com.yasser.thmanyahtask.modules.home.presentation.uimodel
 
 import com.yasser.thmanyahtask.R
+import com.yasser.thmanyahtask.core.extensions.convertToDate
+import com.yasser.thmanyahtask.core.extensions.convertToUiDate
 import com.yasser.thmanyahtask.core.extensions.toHours
 import com.yasser.thmanyahtask.core.extensions.toMinutes
 import com.yasser.thmanyahtask.modules.home.data.model.response.BroadcastPlaylistResponse
 import com.yasser.thmanyahtask.modules.home.data.model.response.EpisodeResponse
 import com.yasser.thmanyahtask.modules.home.domain.entity.BroadcastPlaylistEntity
 import com.yasser.thmanyahtask.modules.home.domain.entity.EpisodeEntity
+import java.net.ConnectException
 import java.util.concurrent.TimeUnit
 
 fun BroadcastPlaylistEntity.toHomeUiState():HomeUiState{
@@ -57,11 +60,12 @@ fun List<EpisodeEntity>.toListOfEpisodeUiModel():List<EpisodeUiModel>{
             image=episodeEntity.image,
             imageBigger=episodeEntity.imageBigger,
             audioLink=episodeEntity.audioLink,
-            duration=episodeEntity.duration,
+            duration=if (episodeEntity.durationInSeconds.toHours()>0)episodeEntity.durationInSeconds.toHours() else episodeEntity.durationInSeconds.toMinutes(),
             durationInSeconds=episodeEntity.durationInSeconds,
+            timeUnit = if (episodeEntity.durationInSeconds.toHours()>0)TimeUnit.HOURS else TimeUnit.MINUTES ,
             views=episodeEntity.views,
             podcastName=episodeEntity.podcastName,
-            releaseDate=episodeEntity.releaseDate,
+            releaseDate=episodeEntity.releaseDate.convertToDate(dateTimeFormat = "yyyy-MM-dd'T'HH:mm:sss'Z'")?.convertToUiDate()?:episodeEntity.releaseDate,
         )
     }
 }
@@ -70,16 +74,18 @@ fun Throwable.toHomeUiState():HomeUiState{
     return HomeUiState(
         data = null,
         isLoading = false,
-        errorMsg = R.string.msgUnexpextedError,
-        isNetworkError = false
+        errorMsg = this.getErrorMessageResource(),
+        isNetworkError = this is ConnectException
     )
 }
 
-fun Boolean.toHomeUiState(oldState:HomeUiState):HomeUiState{
-    return HomeUiState(
-        data = oldState.data,
-        isLoading = if(this)oldState.isLoading else false ,
-        errorMsg = if (oldState.data==null&&!this) R.string.msgNoInternetConnection else null ,
-        isNetworkError = oldState.data==null&&!this,
-    )
+fun Throwable.getErrorMessageResource():Int{
+   return when(this){
+        is ConnectException -> R.string.msgNoInternetConnection
+        else -> R.string.msgUnexpextedError
+    }
 }
+
+
+
+

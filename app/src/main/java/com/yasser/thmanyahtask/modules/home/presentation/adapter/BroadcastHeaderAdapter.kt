@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.yasser.thmanyahtask.R
 import com.yasser.thmanyahtask.core.extensions.loadImage
 import com.yasser.thmanyahtask.core.extensions.onClick
 import com.yasser.thmanyahtask.databinding.LayoutBroadcastHeaderBinding
 import com.yasser.thmanyahtask.modules.home.presentation.adapter.listener.BroadcastActionListener
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.BroadcastUiModel
+import java.util.concurrent.TimeUnit
 
 
 class BroadcastHeaderAdapter constructor(
@@ -35,6 +37,9 @@ class BroadcastHeaderAdapter constructor(
             binding.broadcastDescription.text=item.description
             binding.coverImage.loadImage(item.image,placeholderDrawable = null, progressBar = null)
             binding.likeImg.setImageResource(item.favoriteIcon)
+            val episodeCount=context.resources.getQuantityString(R.plurals.episode,item.episodeCount.toInt(),item.episodeCount.toInt())
+            val episodeDuration= context.resources.getQuantityString(if (item.timeUnit==TimeUnit.HOURS)R.plurals.hours else R.plurals.minutes ,item.episodeTotalDuration.toInt(),item.episodeTotalDuration.toInt())
+            binding.broadcastEpisodesCount.text= "$episodeCount , $episodeDuration"
             initAction(item)
         }
 

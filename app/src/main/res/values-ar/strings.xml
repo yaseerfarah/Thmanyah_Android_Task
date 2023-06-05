@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">Thmanyah Task</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">ثمانية</string>
 
     <string name="msgNoInternetConnection">فشل الاتصال. يرجى التحقق من اتصالك بالإنترنت وحاول مرة أخرى.</string>
     <string name="msgUnexpextedError">حدث خطأ. الرجاء المحاولة مرة أخرى فيما بعد.</string>
@@ -9,22 +9,26 @@
     <string name="library">المكتبة</string>
     <string name="episodes">الحلقات</string>
     <string name="empty_episode">لا يوجد اي حلقات بعد</string>
+    <string name="random_play">تشغيل متنوع</string>
 
-    <plurals name="hours">
+    <plurals name="hours" tools:ignore="MissingQuantity">
         <item quantity="one"> ساعة</item>
         <item quantity="two">ساعاتان</item>
-        <item quantity="other">%d ساعات</item>
+        <item quantity="few">%d ساعات</item>
+        <item quantity="other">%d ساعة</item>
     </plurals>
 
-    <plurals name="minutes">
+    <plurals name="minutes" tools:ignore="MissingQuantity">
         <item quantity="one"> دقيقة</item>
         <item quantity="two"> دقيقتان</item>
-        <item quantity="other">%d دقائق</item>
+        <item quantity="few">%d دقائق</item>
+        <item quantity="other">%d دقيقة</item>
     </plurals>
 
-    <plurals name="episode">
+    <plurals name="episode" tools:ignore="MissingQuantity">
         <item quantity="one">حلقة</item>
         <item quantity="two">حلقتان</item>
+        <item quantity="few">%d حلقات</item>
         <item quantity="other">%d حلقة</item>
     </plurals>
 </resources>

@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
+import com.yasser.thmanyahtask.R
 import com.yasser.thmanyahtask.core.extensions.loadImage
 import com.yasser.thmanyahtask.core.extensions.onClick
 import com.yasser.thmanyahtask.databinding.ItemEpisodeBinding
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.EpisodeDiffUtils
 import com.yasser.thmanyahtask.modules.home.presentation.uimodel.EpisodeUiModel
+import java.util.concurrent.TimeUnit
 
 
 class EpisodeListAdapter constructor(
@@ -37,7 +39,8 @@ class EpisodeListAdapter constructor(
             binding.episodeImage.loadImage(item.image,placeholderDrawable = null, progressBar = binding.imageProgress)
             binding.episodeTitle.text=item.name
             binding.episodeCategory.text=item.podcastName
-            binding.episodeDate.text=item.releaseDate
+            val episodeDuration= context.resources.getQuantityString(if (item.timeUnit== TimeUnit.HOURS) R.plurals.hours else R.plurals.minutes ,item.duration.toInt(),item.duration.toInt())
+            binding.episodeDate.text=episodeDuration
             initAction(item)
 
         }
