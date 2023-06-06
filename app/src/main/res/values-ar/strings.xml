@@ -31,4 +31,21 @@
         <item quantity="few">%d حلقات</item>
         <item quantity="other">%d حلقة</item>
     </plurals>
+
+
+    <string-array name="month_array">
+        <item>يناير</item>
+        <item>فبراير</item>
+        <item>مارس</item>
+        <item>ابريل</item>
+        <item>مايو</item>
+        <item>يونيو</item>
+        <item>يوليو</item>
+        <item>اغسطس</item>
+        <item>سبتمبر</item>
+        <item>اكتوبر</item>
+        <item>نوفمبر</item>
+        <item>ديسمبر</item>
+    </string-array>
+
 </resources>

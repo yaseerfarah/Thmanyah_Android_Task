@@ -10,10 +10,12 @@ fun String.toBearerToken():String{
 }
 
 fun String.convertToDate(
-    dateTimeFormat: String = "yyyy/MM/dd'T'HH:mm",
-    timeZone: String? = null
+    dateTimeFormat: String = "yyyy-MM-dd",
+    languageCode:String="ar",
+    timeZone: String = "UTC"
 ): Date? {
-    val df = SimpleDateFormat(dateTimeFormat, Locale.ENGLISH)
+    val df = SimpleDateFormat(dateTimeFormat, Locale(languageCode))
+    df.timeZone = TimeZone.getTimeZone(timeZone)
     return try {
         df.parse(this)
     } catch (e: ParseException) {
@@ -22,7 +24,8 @@ fun String.convertToDate(
 
 }
 
-fun Date.convertToUiDate(dateFormat: String = "yyyy/MM/dd , hh:mm a"): String {
-    val df = SimpleDateFormat(dateFormat, Locale.ENGLISH)
-    return df.format(this)
+fun Date.convertToUiDate(): String {
+    val yearFormat = SimpleDateFormat("yyyy", Locale("en"))
+    val monthFormat = SimpleDateFormat("MMMM", Locale("ar"))
+    return "${yearFormat.format(this)} ${monthFormat.format(this)}"
 }

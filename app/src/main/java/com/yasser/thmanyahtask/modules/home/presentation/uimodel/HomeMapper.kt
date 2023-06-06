@@ -65,7 +65,7 @@ fun List<EpisodeEntity>.toListOfEpisodeUiModel():List<EpisodeUiModel>{
             timeUnit = if (episodeEntity.durationInSeconds.toHours()>0)TimeUnit.HOURS else TimeUnit.MINUTES ,
             views=episodeEntity.views,
             podcastName=episodeEntity.podcastName,
-            releaseDate=episodeEntity.releaseDate.convertToDate(dateTimeFormat = "yyyy-MM-dd'T'HH:mm:sss'Z'")?.convertToUiDate()?:episodeEntity.releaseDate,
+            releaseDate=episodeEntity.releaseDate.convertToDate()?.convertToUiDate() ?:episodeEntity.releaseDate,
         )
     }
 }

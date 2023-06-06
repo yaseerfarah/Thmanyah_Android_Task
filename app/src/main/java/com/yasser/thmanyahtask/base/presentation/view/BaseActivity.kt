@@ -9,7 +9,7 @@ import com.yasser.thmanyahtask.base.presentation.viewmodel.StateViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 
-abstract class BaseActivity<T : ViewBinding, UIModel,UIState,EFFECT,EVENT,VM : StateViewModel<UIModel, UIState,EFFECT,EVENT>>(
+abstract class BaseActivity<T : ViewBinding, UIModel,UIState,EVENT,VM : StateViewModel<UIModel, UIState,EVENT>>(
 ) : AppCompatActivity() {
 
 

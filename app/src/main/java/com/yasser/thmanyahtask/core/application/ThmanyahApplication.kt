@@ -1,6 +1,7 @@
 package com.yasser.thmanyahtask.core.application
 
 import android.app.Application
+import android.content.Context
 import android.content.res.Configuration
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -15,9 +16,8 @@ class ThmanyahApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        changeLanguage("ar")
-    }
 
+    }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)

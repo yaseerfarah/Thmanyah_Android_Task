@@ -40,7 +40,7 @@ class EpisodeListAdapter constructor(
             binding.episodeTitle.text=item.name
             binding.episodeCategory.text=item.podcastName
             val episodeDuration= context.resources.getQuantityString(if (item.timeUnit== TimeUnit.HOURS) R.plurals.hours else R.plurals.minutes ,item.duration.toInt(),item.duration.toInt())
-            binding.episodeDate.text=episodeDuration
+            binding.episodeDate.text="${item.releaseDate} , $episodeDuration"
             initAction(item)
 
         }

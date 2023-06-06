@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
     @ApplicationContext context: Context,
     private val getBroadcastPlaylistUseCase: GetBroadcastPlaylistUseCase,
     ):
-    StateViewModel<HomeUiModel, HomeUiState, HomeUIEffects, HomeUIEvents>(HomeUiState(data = null, isLoading = true, errorMsg = null, isNetworkError = false)) {
+    StateViewModel<HomeUiModel, HomeUiState, HomeUIEvents>(HomeUiState(data = null, isLoading = true, errorMsg = null, isNetworkError = false)) {
 
 
 

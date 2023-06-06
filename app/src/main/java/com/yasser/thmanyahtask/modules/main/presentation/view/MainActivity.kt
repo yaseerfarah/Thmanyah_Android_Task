@@ -3,30 +3,26 @@ package com.yasser.thmanyahtask.modules.main.presentation.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import com.example.moviecompose.modules.details.presentation.uimodel.MainUiModel
-import com.example.moviecompose.modules.details.presentation.uimodel.MainUiState
+import com.yasser.thmanyahtask.modules.main.presentation.uimodel.MainUiModel
+import com.yasser.thmanyahtask.modules.main.presentation.uimodel.MainUiState
 import com.yasser.thmanyahtask.R
 import com.yasser.thmanyahtask.base.presentation.navigation.NavigationCoordinator
 import com.yasser.thmanyahtask.base.presentation.view.BaseActivity
+import com.yasser.thmanyahtask.core.extensions.changeLanguage
 import com.yasser.thmanyahtask.databinding.ActivityMainBinding
 import com.yasser.thmanyahtask.modules.main.presentation.navigation.MainNavigationEvent
 import com.yasser.thmanyahtask.modules.main.presentation.uimodel.BottomNavEnum
-import com.yasser.thmanyahtask.modules.main.presentation.uimodel.MainUIEffects
 import com.yasser.thmanyahtask.modules.main.presentation.uimodel.MainUIEvents
 import com.yasser.thmanyahtask.modules.main.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity :BaseActivity<ActivityMainBinding,MainUiModel,MainUiState,MainUIEffects,MainUIEvents,MainViewModel>() {
+class MainActivity :BaseActivity<ActivityMainBinding, MainUiModel, MainUiState,MainUIEvents,MainViewModel>() {
 
 
     override val viewModel by viewModels<MainViewModel>()
@@ -46,6 +42,11 @@ class MainActivity :BaseActivity<ActivityMainBinding,MainUiModel,MainUiState,Mai
 
     override fun handleOrientation() {
 
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        val context=newBase?.changeLanguage()
+        super.attachBaseContext(context)
     }
 
     override fun initViews() {

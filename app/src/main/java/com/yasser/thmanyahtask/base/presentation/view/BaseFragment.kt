@@ -11,7 +11,7 @@ import com.yasser.thmanyahtask.base.presentation.viewmodel.StateViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 
-abstract class BaseFragment<BINDING : ViewBinding, UIModel, UIState,EFFECT,EVENT,VM : StateViewModel<UIModel, UIState,EFFECT,EVENT>>(
+abstract class BaseFragment<BINDING : ViewBinding, UIModel, UIState,EVENT,VM : StateViewModel<UIModel, UIState,EVENT>>(
 ) : Fragment() {
 
     protected abstract val viewModel: VM

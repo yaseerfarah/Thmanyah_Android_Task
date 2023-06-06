@@ -28,4 +28,20 @@
         <item quantity="two">%d episodes</item>
         <item quantity="other">%d episodes</item>
     </plurals>
+
+
+    <string-array name="month_array">
+        <item>JANUARY</item>
+        <item>FEBRUARY</item>
+        <item>MARCH</item>
+        <item>APRIL</item>
+        <item>MAY</item>
+        <item>JUNE</item>
+        <item>JULY</item>
+        <item>AUGUST</item>
+        <item>SEPTEMBER</item>
+        <item>OCTOBER</item>
+        <item>NOVEMBER</item>
+        <item>DECEMBER</item>
+    </string-array>
 </resources>

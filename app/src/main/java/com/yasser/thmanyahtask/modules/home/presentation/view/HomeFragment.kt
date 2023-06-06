@@ -15,7 +15,7 @@ import com.yasser.thmanyahtask.modules.home.presentation.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding,HomeUiModel,HomeUiState,HomeUIEffects,HomeUIEvents,HomeViewModel>(),
+class HomeFragment : BaseFragment<FragmentHomeBinding,HomeUiModel,HomeUiState,HomeUIEvents,HomeViewModel>(),
     BroadcastActionListener {
     override val viewModel by viewModels<HomeViewModel>()
 

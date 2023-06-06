@@ -7,14 +7,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 
-abstract class StateViewModel<UIModel, UIState,EFFECT,EVENT>(
+abstract class StateViewModel<UIModel, UIState,EVENT>(
     val initialState: UIState,
 ) : ViewModel() {
 
 
-    private var _effect: MutableStateFlow<EFFECT?> = MutableStateFlow(null)
+
     val uiModel = MutableStateFlow(mapStateToUIModel(initialState, initialState))
-    val effect: StateFlow<EFFECT?> = _effect
+
 
     private var lockObject = Any()
 
@@ -39,19 +39,11 @@ abstract class StateViewModel<UIModel, UIState,EFFECT,EVENT>(
 
     }
 
-    protected open fun updateEffect(newEffect: EFFECT) {
-
-        _effect.value = newEffect
-
-    }
-
     protected abstract fun mapStateToUIModel(oldState: UIState, newState: UIState): UIModel
 
     abstract fun sendEvent(event:EVENT)
 
-    fun resetEffect() {
-        _effect.value=null
-    }
+
 
     protected open fun updateState(stateTransformer: UIState.() -> UIState) {
         this.state = stateTransformer(state)
